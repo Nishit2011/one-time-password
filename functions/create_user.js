@@ -1,4 +1,4 @@
-const admin = require('firebase-admin');
+const admin = require("firebase-admin");
 module.exports = function(req, res) {
   //Verify the user provided a phone
 
@@ -12,11 +12,9 @@ module.exports = function(req, res) {
   const phone = String(req.body.phone).replace(/[^\d]/g, "");
   //Create a new user account using that phone number
   //make user whose uniue id is their phn
-  admin
-    .auth()
-    .createUser({ uid: phone })
+  admin.auth().createUser({ uid: phone })
     .then(user => res.send(user))
-    .catch(err => res.status(422)
-    .send({ error: err }));
+    .catch(err => res.status(422).send({ error: err }));
+
   //Respons to the user reuest, saying the account was made
 };
